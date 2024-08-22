@@ -27,7 +27,7 @@ export function useGetAllMangaCatalog(setIsFetching) {
     };
   }, []);
 
-  return mangaBooks;
+  return [mangaBooks, setMangaBooks];
 }
 
 export function useGetAllMangaCatalogLatest() {
@@ -116,4 +116,25 @@ export function useDeleteManga() {
   };
 
   return deleteManga;
+}
+
+
+export function useGetMangaPage(offSetPage, setMangaBooks){
+  const directoryPageSize = `/catalogList?offset=${offSetPage}&pageSize=3`;
+  let result = [];
+
+  useEffect(()=>{
+
+    (async ()=>{
+      try {
+        
+        result = await mangaAPI.getCatalogPageSize(directoryPageSize);
+        setMangaBooks(result);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+    
+  },[offSetPage])
+  
 }

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import { useGetAllMangaCatalog } from '../../hooks/useMangaCatalog';
+import { useGetMangaPage } from '../../hooks/useMangaCatalog';
 import filterByGenre from '../../util/filterByGenreCatalog';
 
 import CatalotItem from './catalog-item/CatalogItem';
@@ -10,17 +11,39 @@ import './catalog.css';
 
 function Catalog() {
     const [isFetching, setIsFetching] = useState(true);
-    const mangaBooks = useGetAllMangaCatalog(setIsFetching);
+    const [mangaBooks, setMangaBooks] = useGetAllMangaCatalog(setIsFetching);
+    const [pageMangaBooks, setPageMangaBooks] = useState([]);
     const [filterGenre, setFilterGenre] = useState('All');
     const [filteredBooks, setFilteredBooks] = useState([]);
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pageOffSet, setPageOffSet] = useState(0);
+
+    useGetMangaPage(pageOffSet, setMangaBooks);
+    
     useEffect(() => {
         const result = filterByGenre(mangaBooks, filterGenre);
         setFilteredBooks(result);
     }, [filterGenre, mangaBooks]);
     
     const handleGenreFilterClick = (e) =>{
-        setFilterGenre(e.target.innerText)
+        setFilterGenre(e.target.innerText);
+    }
+
+    const handlePageClick = (e) =>{
+        const numberOfPages = Math.ceil(mangaBooks.length / 2);
+        const buttonType = e.target.innerText;
+
+        if(buttonType == "<"){
+            currentPage - 1 == 0 ? setCurrentPage(1) : setCurrentPage(currentPage - 1);
+            pageOffSet - 3 < 0 ? setPageOffSet(0) : setPageOffSet(pageOffSet - 3);
+            
+        }else{
+            if(!(currentPage + 1 > numberOfPages)){
+                setCurrentPage(currentPage + 1);
+                setPageOffSet(pageOffSet + 3);
+            }
+        }   
     }
 
 
@@ -38,6 +61,11 @@ function Catalog() {
             <>
                 <div className="catalog-items">
                     {(filteredBooks.map(manga => manga.statusDelete == false ? <CatalotItem key={manga._id} manga={manga}/> : ''))} 
+                </div>
+                <div className='page-buttons-container'>
+                    <button className='page-buttons' onClick={handlePageClick}>{"<"}</button>
+                    <h1 className='currentpage'>{currentPage}</h1>
+                    <button className='page-buttons' onClick={handlePageClick}>{">"}</button>
                 </div>
             </>
             : 

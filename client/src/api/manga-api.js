@@ -18,6 +18,8 @@ const createBoughtManga = (directory, data, accessToken) => request.post(`${BASE
 
 const getBoughtManga = (encodedOwnerId) => request.get(`${BASE_URL}/boughtProducts?where=_ownerId%3D${encodedOwnerId}&load=manga%3DmangaId%3AproductList`)
 
+const getCatalogPageSize = (directory) => request.get(`${BASE_URL}/${directory}`);
+
 const mangaAPI = {
     getAllManga,
     getMangaById,
@@ -26,7 +28,8 @@ const mangaAPI = {
     editManga,
     buyManga,
     createBoughtManga,
-    getBoughtManga
+    getBoughtManga,
+    getCatalogPageSize
 }
 
 export default mangaAPI 
