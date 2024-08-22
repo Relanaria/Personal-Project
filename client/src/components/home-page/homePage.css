@@ -1,0 +1,107 @@
+.homepage {
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+}
+
+.description, .catalog-section, .store-section {
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid #fff;
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    
+}
+
+.description p, .catalog-section p, .store-section p {
+    margin: 0;
+}
+
+.catalog-section, .store-section {
+    margin-top: 30px;
+}
+
+.header-section h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+  }
+  
+  .header-section p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  
+  .latest-additions-section {
+    margin-top: 20px;
+  }
+  
+  .latest-additions-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .manga-panels {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .manga-panel {
+    background-color: rgba(28, 28, 28, 0.8);
+    border-radius: 10px;
+    padding: 15px;
+    width: 180px;
+    margin: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s;
+  }
+  
+  .manga-panel img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 250px;
+    height: 250px;
+  }
+  
+  .manga-panel h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+  }
+  
+  .manga-panel p {
+    font-size: 1em;
+    margin: 5px 0;
+  }
+  
+  .manga-panel .details-button {
+    background-color: #ff4081;
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: auto;
+    font-size: 0.9em;
+  }
+  
+  .manga-panel .details-button:hover {
+    background-color: #ff79a1;
+  }
+  
+  .manga-panel:hover {
+    transform: scale(1.05);
+  }
+
+.manga-panel .details-button:link,
+.manga-panel .details-button:visited {
+  text-decoration: none;
+}

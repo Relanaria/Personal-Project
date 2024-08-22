@@ -1,0 +1,95 @@
+.details-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(28, 28, 28, 0.8);
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+
+.error {
+    color: red;
+    font-size: 1.2em;
+    margin-top: 0.25em;
+}
+
+.manga-details {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+.manga-image {
+    position: relative;
+}
+
+.manga-image img {
+    max-width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #ff4081;
+    font-size: 2em;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.favorite-btn:hover {
+    color: #ff79a1;
+}
+
+.manga-info {
+    flex: 1;
+    margin-left: 20px;
+    text-align: left;
+}
+
+.manga-title {
+    margin-top: 0;
+}
+
+.manga-author, .manga-description, .manga-price {
+    margin: 10px 0;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.actions .btn {
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: #ff4081;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.actions .buy-btn {
+    background-color: #28a745;
+}
+
+.actions .buy-btn:hover {
+    background-color: #218838;
+}
+
+.actions .edit-btn:hover, .actions .delete-btn:hover {
+    background-color: #ff79a1;
+}

@@ -1,0 +1,59 @@
+.edit-manga-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(28, 28, 28, 0.8);
+    border-radius: 10px;
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-right: 40px;
+  }
+  
+  .edit-manga-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-form-group {
+    margin-bottom: 15px;
+  }
+  
+  .edit-form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .edit-form-group input,
+  .edit-form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .edit-form-group input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  
+  .edit-form-group input[type="number"]::-webkit-outer-spin-button,
+  .edit-form-group input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #ff4081;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  button:hover {
+    background-color: #ff79a1;
+    transform: scale(1.05);
+  }
+  

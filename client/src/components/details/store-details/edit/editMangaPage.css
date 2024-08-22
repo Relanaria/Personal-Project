@@ -1,0 +1,82 @@
+.edit-manga-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(28, 28, 28, 0.8);
+    color: #fff;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.edit-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-form-group {
+    margin-bottom: 15px;
+}
+
+.edit-label {
+    display: block;
+    margin-bottom: 5px;
+}
+select {
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.edit-input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+}
+
+.edit-textarea{
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1em;
+    height: 5em;
+}
+
+.edit-input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.edit-input[type="number"]::-webkit-outer-spin-button,
+.edit-input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.edit-submit-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #ff4081;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.edit-submit-btn:hover {
+    background-color: #ff79a1;
+    transform: scale(1.05);
+}

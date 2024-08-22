@@ -1,0 +1,37 @@
+{
+  "mangas": {
+    "39020700-a0ce-4a52-b909-941284876096": {
+      "title": "Naruto",
+      "author": "Masashi Kishimoto",
+      "description": "A young ninja strives to be the best in his village.",
+      "owner": "owner_id",
+      "genre": ["Adventure", "Fantasy"],
+      "volume": 1,
+      "state": "New",
+      "imgUrl": "https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_QL75_UY281_CR1,0,190,281_.jpg",
+      "_id": "39020700-a0ce-4a52-b909-941284876096"
+    },
+    "288ce411-c560-46aa-b628-e960815cd32c": {
+      "title": "The Beginning After the End",
+      "author": "TurtleMe",
+      "description": "A former king in a new world must navigate life as both a child and a warrior.",
+      "owner": "owner_id",
+      "genre": ["Fantasy", "Adventure"],
+      "volume": 1,
+      "state": "New",
+      "imgUrl": "https://m.media-amazon.com/images/I/81jzTuXiB9L._AC_UF1000,1000_QL80_.jpg",
+      "_id": "288ce411-c560-46aa-b628-e960815cd32c"
+    },
+    "7564aa89-18b2-420f-9086-935debec5ba5": {
+      "title": "Dorohedoro",
+      "author": "Q Hayashida",
+      "description": "In a city so dismal it's known only as 'the Hole,' a clan of Sorcerers has been plucking people off the streets to use as guinea pigs for atrocious experiments in the black arts.",
+      "owner": "owner_id",
+      "genre": ["Fantasy", "Horror"],
+      "volume": 1,
+      "state": "Used - Good",
+      "imgUrl": "https://m.media-amazon.com/images/M/MV5BNzIxODYzMjYtYTU3My00MzU1LWIyYmItZjRjM2NhYTU4NjQxXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg",
+      "_id": "7564aa89-18b2-420f-9086-935debec5ba5"
+    }
+  }
+}
