@@ -8,8 +8,7 @@ function validateRegisterInput(userData) {
   if (!userData.email) {
     errors.email = "Email field is required";
   } else if (!emailRegex.test(userData.email)) {
-    errors.email =
-      "Email must contain letters and/or numbers only.\n Followed by a @/letters.letters.\n Example: test123@domain.org";
+    errors.email ="Email must contain letters and/or numbers only.\n Followed by a @/letters.letters.\n Example: test123@domain.org";
   }
 
   if (!userData.username) {

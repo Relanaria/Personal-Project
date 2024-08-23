@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import { useRegister } from '../../hooks/useAuth';
 import valitadeInputs from '../../util/validateFormInputs';
+import { trimInputs } from '../../util/trimInputs';
 
 import './register.css'; 
 
@@ -20,6 +21,7 @@ function Register() {
     const register = useRegister();
 
     const {values, changeHandler, submitHandler} = useForm(initialValues,async (userData) => {
+        trimInputs(userData);
         let formErrors = valitadeInputs.validateRegisterInput(userData);
         try {
             
@@ -27,10 +29,11 @@ function Register() {
                 setErrors(formErrors);
                 return;
             }
-
-           await register(userData);
+               await register(userData);
             navigate('/');
         } catch (error) {
+            console.log(error);
+            
             formErrors.email = 'Email already exists!';
             setErrors(formErrors);
             return;
