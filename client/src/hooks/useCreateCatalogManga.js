@@ -7,6 +7,7 @@ const directory = 'catalogList';
 export const useCreateCatalogManga = () =>{
 
     const createCatalogManga = async (mangaData, userToken) =>{
+        mangaData.statusDelete = false;
         const result = await mangaAPI.createManga(directory, mangaData, userToken);
 
         if(result.code == 401){

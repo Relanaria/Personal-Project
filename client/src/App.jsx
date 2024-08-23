@@ -11,6 +11,7 @@ import EditCatalog from "./components/details/catalog-details/edit/EditCatalog";
 import CreateItem from './components/create-item/createEditForm/CreateItem';
 import CreateCatalogItem from "./components/create-item/createCatalogForm/CreateCatalogItem";
 import ContactUs from "./components/contact-us/ContactUs";
+import ReadManga from "./components/details/catalog-details/read/ReadManga";
 import AuthGuardUserEdit from "./components/common/AuthGuardUserEdit";
 import AuthGuardsUser from "./components/common/AuthGuardsUser";
 import AuthGuardGuest from "./components/common/AuthGuardGuest";
@@ -52,6 +53,7 @@ function App() {
 
         <Route element={<AuthGuardsUser/>}>
           <Route path="/catalog/edit/:mangaId" element={ <EditCatalog /> }/>
+          <Route path="/catalog/read/:mangaId" element={<ReadManga />}/>
           <Route path="/createCatalogItem" element={ <CreateCatalogItem /> }/>
           <Route path='/createItem' element={<CreateItem />}/>  
           <Route path="/contact-us" element={<ContactUs />} /> 

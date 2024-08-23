@@ -119,6 +119,7 @@ export default function CatalogMangaDetails(){
                             : 
                             ''
                             }
+                            <Link to={`/catalog/read/${mangaId}`} className="edit-btn">Read Manga</Link>
                             {authUserContext.accountStatus != undefined ? 
                                 <div className="owner-actions">
                                     <Link to={`/catalog/edit/${manga._id}`} className="edit-btn">Edit</Link>

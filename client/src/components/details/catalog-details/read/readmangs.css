@@ -1,0 +1,48 @@
+/* ReadingPage.css */
+.container-read {
+    background-color: rgba(28, 28, 28, 0.8);
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 20px 20px 20px;
+}
+
+.select-chapter{
+    background-color: #ff4081;
+    margin-top: 20px;
+    width: 150px;
+}
+
+.chapter-img {
+    width: 300px;
+    height: 350px;
+}
+
+.container-chapter{
+    background-color: rgba(28, 28, 28, 0.8);
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 20px 20px 20px;
+    display: flex;
+    flex-direction: column; /* This stacks the items vertically */
+    justify-content: center; /* Centers items vertically */
+    align-items: center; 
+}
+
+.container-read ul {
+    list-style-type: none;
+}
+
+.container-read li {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-read img {
+    width: 700px;
+    height: 800px;
+    background-color: #ccc; /* Placeholder background */
+}

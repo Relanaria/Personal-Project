@@ -65,8 +65,8 @@ export function useGetOneMangaCatalog(mangaId, setIsPending) {
     (async () => {
       try {
          result = await mangaAPI.getMangaById(directory, mangaId, signal);
-        
       } catch (error) {
+        console.log(error);
       }
       setIsPending(false);
       setManga(result);
@@ -119,22 +119,38 @@ export function useDeleteManga() {
 }
 
 
-export function useGetMangaPage(offSetPage, setMangaBooks){
-  const directoryPageSize = `/catalogList?offset=${offSetPage}&pageSize=3`;
-  let result = [];
+export function useGetMangaPage(offSetPage, genre, setMangaBooks, setIsFetching){
+  const directoryPageSize = `catalogList?offset=${offSetPage}&pageSize=3`;
+  const directoryPageSizeAndGenre = `catalogList?offset=${offSetPage}&pageSize=3&where=genre%3D%22${genre}%22`;
+  let result = {};
 
   useEffect(()=>{
 
     (async ()=>{
-      try {
-        
-        result = await mangaAPI.getCatalogPageSize(directoryPageSize);
+      try {  
+        if(genre == "All"){
+          result.books =  await  mangaAPI.getCatalogPageSize(directoryPageSize);
+          const numberOfBooksInCollection = await mangaAPI.getCatalogPageSize(`catalogList?count`);
+          result.bookCount = numberOfBooksInCollection <= 3 ? 2 : numberOfBooksInCollection;
+          console.log(numberOfBooksInCollection);
+          
+        }else{
+          result.books = await mangaAPI.getCatalogPageSize(directoryPageSizeAndGenre);
+          const numberOfBooksInCollection = await mangaAPI.getCatalogPageSize(`catalogList?where=genre%3D%22${genre}%22&count`);
+          console.log(numberOfBooksInCollection);
+          
+          result.bookCount = numberOfBooksInCollection <= 3 ? 2 : numberOfBooksInCollection;
+        };
         setMangaBooks(result);
+        setIsFetching(false);
       } catch (error) {
         console.log(error);
       }
     })();
     
-  },[offSetPage])
+  },[offSetPage, genre])
   
 }
+
+
+

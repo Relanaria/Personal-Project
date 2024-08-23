@@ -11,27 +11,31 @@ import './catalog.css';
 
 function Catalog() {
     const [isFetching, setIsFetching] = useState(true);
-    const [mangaBooks, setMangaBooks] = useGetAllMangaCatalog(setIsFetching);
-    const [pageMangaBooks, setPageMangaBooks] = useState([]);
+    const [mangaBooks, setMangaBooks] = useState({
+        books: [],
+        bookCount: 0
+    });
     const [filterGenre, setFilterGenre] = useState('All');
     const [filteredBooks, setFilteredBooks] = useState([]);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [pageOffSet, setPageOffSet] = useState(0);
 
-    useGetMangaPage(pageOffSet, setMangaBooks);
+    useGetMangaPage(pageOffSet, filterGenre, setMangaBooks, setIsFetching);
     
     useEffect(() => {
-        const result = filterByGenre(mangaBooks, filterGenre);
+        const result = filterByGenre(mangaBooks.books, filterGenre);
         setFilteredBooks(result);
     }, [filterGenre, mangaBooks]);
     
     const handleGenreFilterClick = (e) =>{
         setFilterGenre(e.target.innerText);
+        setPageOffSet(0);
+        setCurrentPage(1);
     }
 
     const handlePageClick = (e) =>{
-        const numberOfPages = Math.ceil(mangaBooks.length / 2);
+        const numberOfPages = Math.ceil(mangaBooks.bookCount / 3);
         const buttonType = e.target.innerText;
 
         if(buttonType == "<"){

@@ -85,10 +85,10 @@ export default function CreateCatalogItem() {
 
             <label htmlFor="genre">Genres:</label>
             <select id="genre" name="genre" onChange={changeHandler} multiple>
-                <option value="fantasy">Fantasy</option>
-                <option value="adventure">Adventure</option>
-                <option value="sci-fi">Sci-Fi</option>
-                <option value="romance">Romance</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Romance">Romance</option>
             </select>
             {errors.genre && <p className="error">{errors.genre}</p>}
 
