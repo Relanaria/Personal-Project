@@ -53,12 +53,10 @@ export default function StoreMangaDetails(props){
             // await buyManga(mangaId, manga, authUserContext.accessToken);
             
             if(userInfo.products){
-                console.log('da');
                 userInfo.products.push(manga);
                 authUserContext.products.push(manga);
                 localStorage.setItem("authState", JSON.stringify(userInfo));
             }else{
-                console.log('ne');
                 userInfo.products = [manga];
                 authUserContext.products.push(manga);
                 localStorage.setItem("authState", JSON.stringify(userInfo));
