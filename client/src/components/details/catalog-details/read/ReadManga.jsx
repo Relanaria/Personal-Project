@@ -14,19 +14,36 @@ export default function ReadManga() {
     const chapters = Array.from({ length: manga.numberOfChapters }, (_, index) => index + 1);
     
     const handleChapterChangeClick = (e) =>{
-        console.log(`Chapter${e.target.value}`);
+        const updateChapter = currentChapter.split('Chapter');
+        if(e.target.innerText == 'Next chapter' && Number(updateChapter[1]) + 1 <= chapters.length){
+            setCurrentChapter(`Chapter${Number(updateChapter[1]) + 1}`);
+            return;
+        }
         
-        setCurrentChapter(`Chapter${e.target.value}`)
-    }
+        if(e.target.innerText == 'Previous Chapter' && Number(updateChapter[1]) - 1 >= 1){
+            setCurrentChapter(`Chapter${Number(updateChapter[1]) - 1}`)
+            return;
+        }
+
+        if(e.target.type == 'select-one'){
+            setCurrentChapter(`Chapter${e.target.value}`);
+            return;
+        }      
+        
+    };
     
-    return(
+    return (
         <>
         <div className='container-chapter'>
             <h1>Tittle: {manga.title}</h1>
             <img src={manga.imgUrl} alt={manga.title} className='chapter-img'/>
-            <select className='select-chapter' onChange={handleChapterChangeClick}>
-                {chapters.map(chap => <option key={chap} value={chap}>Chapter {chap}</option>)}
-            </select>
+            <div className='readbtn-container'>
+                <button onClick={handleChapterChangeClick}>Previous Chapter</button>
+                <select className='select-chapter' onChange={handleChapterChangeClick} value={currentChapter.replace('Chapter', '')}>
+                    {chapters.map(chap => <option key={chap} value={chap}>Chapter {chap}</option>)}
+                </select>
+                <button onClick={handleChapterChangeClick}>Next chapter</button>
+            </div>
         </div>
         <div className="container-read">
         <ul>
@@ -43,7 +60,17 @@ export default function ReadManga() {
             })
             }
         </ul>
-    </div>
-        </>
+        </div>
+        <div className='container-chapter'>
+            <h1>Tittle: {manga.title}</h1>
+            <div className='readbtn-container'>
+                <button onClick={handleChapterChangeClick}>Previous Chapter</button>
+                <select className='select-chapter' value={currentChapter.replace('Chapter', '')} onChange={handleChapterChangeClick}>
+                    {chapters.map(chap => <option key={chap} value={chap}>Chapter {chap}</option>)}
+                </select>
+                <button onClick={handleChapterChangeClick}>Next chapter</button>
+            </div>
+        </div>
+    </>
     )
 }

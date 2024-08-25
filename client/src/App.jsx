@@ -23,9 +23,9 @@ import Catalog from "./components/catalog/Catalog";
 import AboutUs from "./components/about/AboutUs";
 import NavBar from "./components/nav-bar/NavBar";
 import Footer from "./components/footer/Footer";
+import CartPage from "./components/cart/Cart";
 import Login from './components/login/Login';
 import Store from './components/store/Store';
-
 
 function App() {
 
@@ -37,35 +37,36 @@ function App() {
 
     <main>
       <Routes>
-        <Route path="/" element={<HomePage />}/>
+        <Route path="/" element={<HomePage/>}/>
 
-        <Route path="/catalog" element={<Catalog />} />
-        <Route path="/catalog/:mangaId/details" element={<CatalogMangaDetails />} />
+        <Route path="/catalog" element={<Catalog/>}/>
+        <Route path="/catalog/:mangaId/details" element={<CatalogMangaDetails/>}/>
 
-        <Route path="/store" element={<Store />} /> 
-        <Route path="/store/:mangaId/details" element={ <StoreMangaDetails /> } /> 
+        <Route path="/store" element={<Store/>}/> 
+        <Route path="/store/:mangaId/details" element={<StoreMangaDetails/>}/> 
 
-        <Route path="/about" element={<AboutUs />} />
+        <Route path="/about" element={<AboutUs/>}/>
 
         <Route element={<AuthGuardUserEdit/>}>
-          <Route path="/store/edit/:mangaId" element={ <EditMangaPage /> }/>
+          <Route path="/store/edit/:mangaId" element={<EditMangaPage/>}/>
         </Route>
 
         <Route element={<AuthGuardsUser/>}>
-          <Route path="/catalog/edit/:mangaId" element={ <EditCatalog /> }/>
-          <Route path="/catalog/read/:mangaId" element={<ReadManga />}/>
-          <Route path="/createCatalogItem" element={ <CreateCatalogItem /> }/>
-          <Route path='/createItem' element={<CreateItem />}/>  
-          <Route path="/contact-us" element={<ContactUs />} /> 
+          <Route path="/catalog/edit/:mangaId" element={<EditCatalog/>}/>
+          <Route path="/catalog/read/:mangaId" element={<ReadManga/>}/>
+          <Route path="/createCatalogItem" element={<CreateCatalogItem/>}/>
+          <Route path='/createItem' element={<CreateItem/>}/>  
+          <Route path="/contact-us" element={<ContactUs/>} /> 
           <Route path="/profile" element={<ProfilePage/>}/>
+          <Route path="/myCart" element={<CartPage/>}/>
         </Route>
 
-        <Route element={<AuthGuardGuest />}>
-          <Route path="/login" element={<Login />} /> 
-          <Route path="/register" element={<Register />} /> 
+        <Route element={<AuthGuardGuest />}/>
+          <Route path="/login" element={<Login/>}/> 
+          <Route path="/register" element={<Register/>} > 
         </Route>
 
-        <Route path="*" element={<NotFound />} /> 
+        <Route path="*" element={<NotFound/>}/> 
 
       </Routes>
     </main>

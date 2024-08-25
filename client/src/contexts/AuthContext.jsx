@@ -6,6 +6,7 @@ export const AuthContext = createContext({
   username: "",
   accessToken: "",
   accountStatus: "",
+  products: [],
   isAuthenticated: false,
   changeAuthState: (authState = {}) => null,
   logout: () => null,
@@ -15,14 +16,13 @@ export default function AuthContextProvider(props) {
   const [authState, setAuthState] = useState(() =>{
 
     const localeState = localStorage.getItem("authState");
-
+    
     if(localeState){
       return JSON.parse(localeState);
     }
     
     return {};
   });
-
 
   const changeAuthState = (state) => {
     localStorage.setItem("authState", JSON.stringify(state));
@@ -40,11 +40,12 @@ export default function AuthContextProvider(props) {
     username: authState.username,
     accessToken: authState.accessToken,
     accountStatus: authState.accountStatus,
+    products: authState.products,
     isAuthenticated: !!authState.email,
     changeAuthState,
     logout
   };
-
+  
   return (
     <AuthContext.Provider value={contextData}>
       {props.children}

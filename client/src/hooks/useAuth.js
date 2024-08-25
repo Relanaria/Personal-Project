@@ -11,7 +11,7 @@ export const useLogin = () => {
     if (result.code == 403) {
       throw new Error(result.message);
     }
-
+    result.products = [];
     //TODO update application state
     authState.changeAuthState(result);
   };
@@ -30,6 +30,7 @@ export const useRegister = () =>{
     if(result.code == 409){
       throw new Error(result.message);
     };
+    result.products = [];
 
     authState.changeAuthState(result);
   }

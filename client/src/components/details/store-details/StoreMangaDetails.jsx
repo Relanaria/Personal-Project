@@ -44,10 +44,25 @@ export default function StoreMangaDetails(props){
     }
 
     async function buyMangaHandleCiick() {
+        const userInfo = JSON.parse(localStorage.getItem('authState'));
+        console.log(userInfo);
+        
         let buyError = {};
         try {
             
-            await buyManga(mangaId, manga, authUserContext.accessToken);
+            // await buyManga(mangaId, manga, authUserContext.accessToken);
+            
+            if(userInfo.products){
+                console.log('da');
+                userInfo.products.push(manga);
+                authUserContext.products.push(manga);
+                localStorage.setItem("authState", JSON.stringify(userInfo));
+            }else{
+                console.log('ne');
+                userInfo.products = [manga];
+                authUserContext.products.push(manga);
+                localStorage.setItem("authState", JSON.stringify(userInfo));
+            }
             navigate('/store');
         } catch (error) {
             buyError.isNotAuthorized = error.message;

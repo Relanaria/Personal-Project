@@ -1,0 +1,21 @@
+.cart-icon-wrapper {
+    position: relative; /* Makes the wrapper the reference point for absolute positioning */
+    display: inline-block; /* Ensure the wrapper takes up only the space it needs */
+}
+
+.cart-icon {
+    width: 40px; /* Adjust based on your desired size */
+    height: auto; /* Keeps the aspect ratio of the image */
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px; /* Adjust the position to your liking */
+    right: -10px; /* Adjust the position to your liking */
+    background-color: red; /* Background color of the badge */
+    color: white; /* Text color of the badge */
+    padding: 2px 6px; /* Adjust padding to make the badge look nice */
+    border-radius: 50%; /* Makes the badge circular */
+    font-size: 14px; /* Adjust font size */
+    font-weight: bold; /* Makes the number bold */
+}
