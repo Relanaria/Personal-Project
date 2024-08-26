@@ -64,6 +64,7 @@
     padding: 20px;
     border-radius: 10px;
     background-color: rgba(28, 28, 28, 0.8);
+    width: 500px;
 }
 
 .product-image {
@@ -78,4 +79,8 @@
 .description-cart {
     display: flex;
     flex-direction: column;
+}
+
+.cart-items-list button{ 
+    margin-left: 10px;
 }

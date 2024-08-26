@@ -13,6 +13,7 @@ import CreateCatalogItem from "./components/create-item/createCatalogForm/Create
 import ContactUs from "./components/contact-us/ContactUs";
 import ReadManga from "./components/details/catalog-details/read/ReadManga";
 import AuthGuardUserEdit from "./components/common/AuthGuardUserEdit";
+import FinalizeOrder from "./components/finelizeOrder/FinalizeOrder";
 import AuthGuardsUser from "./components/common/AuthGuardsUser";
 import AuthGuardGuest from "./components/common/AuthGuardGuest";
 import HomePage from "./components/home-page/HomePage";
@@ -59,6 +60,7 @@ function App() {
           <Route path="/contact-us" element={<ContactUs/>} /> 
           <Route path="/profile" element={<ProfilePage/>}/>
           <Route path="/myCart" element={<CartPage/>}/>
+          <Route path="/orderSend" element={<FinalizeOrder/>}/>
         </Route>
 
         <Route element={<AuthGuardGuest />}/>

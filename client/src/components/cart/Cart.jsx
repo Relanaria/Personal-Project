@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useAuthContext } from '../../contexts/AuthContext';
+import { useBuyManga } from '../../hooks/useMangaStore';
 
 import './CartPage.css'; 
 
 export default function CartPage  () {
     const [selectedItem, setSelectedItem] = useState(null);
+    const navigate = useNavigate();
 
     const userContext = useAuthContext();
-    console.log(userContext);
-    
+    const buyManga = useBuyManga();
 
     const handleItemClick = (item) => {
         setSelectedItem(item);
@@ -19,6 +20,26 @@ export default function CartPage  () {
     const calculateTotalPrice = () => {
         return userContext.products.reduce((total, item) => total + Number(item.price), 0);
     };
+
+    const handleRemoveItemClick = (e, mangaId) =>{
+        
+        const cartProducts = JSON.parse(localStorage.getItem('authState'));
+        const result = cartProducts.products.filter(x => x._id != mangaId);
+        cartProducts.products = result;
+        localStorage.setItem('authState', JSON.stringify(cartProducts));
+        
+        userContext.products = userContext.products.filter(x => x._id != mangaId);
+    }
+
+    const handleFinalizeOrderClick = () =>{
+        const res =  buyManga(userContext.products, userContext.accessToken);
+
+        const cartProducts = JSON.parse(localStorage.getItem('authState'));
+        cartProducts.products = [];
+        localStorage.setItem('authState', JSON.stringify(cartProducts));
+        userContext.products = [];
+        navigate('/orderSend');
+    }
 
     return (
         <div className="cart-container">
@@ -31,14 +52,16 @@ export default function CartPage  () {
                             className="cart-item" 
                             onClick={() => handleItemClick(item)}
                         >
-                            <p>{item.title}</p>
+                            <p>Title: {item.title}</p>
+                            <p>Volume: {item.volume}</p>
                             <Link to={`/store/${item._id}/details`} className="details-link">Details</Link>
+                            <button onClick={(e) =>handleRemoveItemClick(e, item._id)} className="details-link">Remove</button>
                         </li>
                     ))}
                 </ul>
                 <div className="cart-summary">
                     <p>Total price: {calculateTotalPrice()}$</p>
-                    <button className="finalize-order-btn">Finalize order</button>
+                    <button onClick={handleFinalizeOrderClick} className="finalize-order-btn">Finalize order</button>
                 </div>
             </div>
             <div className="product-details-section">

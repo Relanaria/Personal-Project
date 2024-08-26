@@ -119,10 +119,17 @@ export function useDeleteManga(){
 
 export function useBuyManga() {
  
-    const buyManga = async (mangaId, data, accessToken, adminAccess = true) => {
-        data.statusSold = 'true';
-        await mangaAPI.createBoughtManga(directoryForBoughtProducts, {mangaId: data._id}, accessToken);
-        const result = await mangaAPI.buyManga(directory, mangaId, data, accessToken, adminAccess);
+    const buyManga = async (mangaData ,accessToken, adminAccess = true) => {
+
+        const promises = mangaData.map(manga =>{
+            manga.statusSold = 'true';
+            const createBoughtMangaPromise = mangaAPI.createBoughtManga(directoryForBoughtProducts, { mangaId: manga._id }, accessToken);
+            const updateMangaStatusPromise = mangaAPI.buyManga(directory, manga._id, manga, accessToken, adminAccess);
+            return Promise.all([createBoughtMangaPromise, updateMangaStatusPromise]);
+        })
+
+        const results = await Promise.all(promises);
+        return results;
     }
 
     return buyManga;

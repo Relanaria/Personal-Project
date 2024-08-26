@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,13 +14,25 @@ import Spinner from '../../spinner/Spinner';
 import './StoreMangaDetails.css';
 
 export default function StoreMangaDetails(props){
+    const authUserContext = useAuthContext();
     const [errors, setErrors] = useState({});
     const { mangaId } = useParams();
     const [isPending, setIsPending] = useState(true);
     const { mangaDetails, setMangaDetails } = useMangaContext();
     const [manga, setManga] = useGetOneMangaStore(mangaId, setIsPending, setMangaDetails);
-    const authUserContext = useAuthContext();
+    const [mangaExistInCart , setMangaExist] = useState(false);
+
+    useEffect(()=>{
+        const userInfo = JSON.parse(localStorage.getItem('authState'));
+        const resStorage = userInfo?.products.find(x => x._id == manga._id);
+        const resContext = authUserContext.products?.find(x => x._id == manga._id);
+        console.log(resStorage || resContext ? true : false);
+        
+        setMangaExist(resStorage || resContext ? true : false)
+    }, [manga])
+
     const navigate = useNavigate();
+
     const deleteManga = useDeleteManga();
     const buyManga = useBuyManga()
 
@@ -45,8 +57,6 @@ export default function StoreMangaDetails(props){
 
     async function buyMangaHandleCiick() {
         const userInfo = JSON.parse(localStorage.getItem('authState'));
-        console.log(userInfo);
-        
         let buyError = {};
         try {
             
@@ -96,7 +106,9 @@ export default function StoreMangaDetails(props){
                                 <button className="btn delete-btn" onClick={deleteHandleCLick}>Delete</button>
                             </>
                             :  
-                            manga.statusSold == "false" && <button className="btn buy-btn" onClick={buyMangaHandleCiick}>Buy</button>
+                            !mangaExistInCart && manga.statusSold == 'false' ? 
+                            <button className="btn buy-btn" onClick={buyMangaHandleCiick}>Buy</button>
+                            : ""
                             }
                         </div>: ''}
                     {errors.isNotAuthorized && <p className="error">{errors.isNotAuthorized}</p>}
