@@ -26,16 +26,12 @@ export default function StoreMangaDetails(props){
         const userInfo = JSON.parse(localStorage.getItem('authState'));
         const resStorage = userInfo?.products.find(x => x._id == manga._id);
         const resContext = authUserContext.products?.find(x => x._id == manga._id);
-        console.log(resStorage || resContext ? true : false);
-        
         setMangaExist(resStorage || resContext ? true : false)
     }, [manga])
 
     const navigate = useNavigate();
 
     const deleteManga = useDeleteManga();
-    const buyManga = useBuyManga()
-
     
     async function deleteHandleCLick(){
         let deleteError = {};
@@ -59,9 +55,6 @@ export default function StoreMangaDetails(props){
         const userInfo = JSON.parse(localStorage.getItem('authState'));
         let buyError = {};
         try {
-            
-            // await buyManga(mangaId, manga, authUserContext.accessToken);
-            
             if(userInfo.products){
                 userInfo.products.push(manga);
                 authUserContext.products.push(manga);
